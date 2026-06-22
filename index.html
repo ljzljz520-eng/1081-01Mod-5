@@ -149,7 +149,7 @@
             height: 100%;
             background: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(8px);
-            z-index: 100;
+            z-index: 500;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -326,6 +326,627 @@
             font-size: 0.9rem;
             line-height: 1.4;
         }
+
+        /* Anniversary Script Styles */
+        .template-modal .modal-content {
+            width: 700px;
+        }
+
+        .template-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .template-card {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .template-card:hover {
+            border-color: var(--metallic-gold);
+            box-shadow: 0 0 20px rgba(197, 160, 89, 0.2);
+            transform: translateY(-4px);
+        }
+
+        .template-card.selected {
+            border-color: var(--metallic-gold);
+            background: rgba(197, 160, 89, 0.1);
+            box-shadow: 0 0 25px rgba(197, 160, 89, 0.3);
+        }
+
+        .template-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .template-name {
+            color: var(--metallic-gold);
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .template-desc {
+            color: #888;
+            font-size: 0.8rem;
+            line-height: 1.4;
+        }
+
+        /* Script Editor */
+        .script-editor {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(5, 7, 10, 0.98);
+            z-index: 300;
+            display: none;
+            flex-direction: column;
+            pointer-events: auto;
+        }
+
+        .script-editor.active {
+            display: flex;
+        }
+
+        .script-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--glass-border);
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .script-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: var(--metallic-gold);
+        }
+
+        .script-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .script-body {
+            flex: 1;
+            display: flex;
+            overflow: hidden;
+        }
+
+        .timeline-panel {
+            flex: 1;
+            padding: 1.5rem;
+            overflow-y: auto;
+            border-right: 1px solid var(--glass-border);
+        }
+
+        .preview-panel {
+            width: 400px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .section-title {
+            color: var(--metallic-gold);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .clip-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .clip-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            border-radius: 6px;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            cursor: grab;
+            transition: all 0.2s ease;
+        }
+
+        .clip-item:hover {
+            border-color: var(--metallic-gold);
+            background: rgba(197, 160, 89, 0.05);
+        }
+
+        .clip-item.dragging {
+            opacity: 0.5;
+        }
+
+        .clip-item.selected {
+            border-color: var(--metallic-gold);
+            background: rgba(197, 160, 89, 0.1);
+        }
+
+        .clip-index {
+            width: 28px;
+            height: 28px;
+            background: var(--metallic-gold);
+            color: #000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+
+        .clip-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .clip-type {
+            font-size: 0.75rem;
+            color: var(--metallic-gold);
+            text-transform: uppercase;
+            margin-bottom: 0.2rem;
+        }
+
+        .clip-title {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .clip-duration {
+            font-size: 0.75rem;
+            color: #888;
+        }
+
+        .clip-controls {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .clip-btn {
+            width: 32px;
+            height: 32px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            color: var(--text-light);
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .clip-btn:hover {
+            background: rgba(197, 160, 89, 0.2);
+            border-color: var(--metallic-gold);
+            color: var(--metallic-gold);
+        }
+
+        .add-clip-btn {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px dashed var(--glass-border);
+            border-radius: 6px;
+            color: #888;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            margin-top: 0.5rem;
+        }
+
+        .add-clip-btn:hover {
+            border-color: var(--metallic-gold);
+            color: var(--metallic-gold);
+            background: rgba(197, 160, 89, 0.05);
+        }
+
+        .preview-area {
+            flex: 1;
+            background: #000;
+            border-radius: 8px;
+            border: 1px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+
+        .preview-placeholder {
+            color: #555;
+            font-size: 0.9rem;
+        }
+
+        .preview-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .preview-subtitle {
+            position: absolute;
+            bottom: 1rem;
+            left: 1rem;
+            right: 1rem;
+            text-align: center;
+            color: white;
+            font-size: 0.9rem;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+        }
+
+        .edit-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .edit-form label {
+            display: block;
+            color: var(--metallic-gold);
+            font-size: 0.8rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .edit-form input[type="text"],
+        .edit-form input[type="number"],
+        .edit-form textarea,
+        .edit-form select {
+            width: 100%;
+            padding: 0.6rem;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid #444;
+            color: white;
+            font-family: inherit;
+            font-size: 0.85rem;
+            border-radius: 4px;
+        }
+
+        .edit-form input:focus,
+        .edit-form textarea:focus,
+        .edit-form select:focus {
+            outline: none;
+            border-color: var(--metallic-gold);
+        }
+
+        .edit-form textarea {
+            resize: vertical;
+            min-height: 60px;
+        }
+
+        /* Playback Mode */
+        .playback-mode {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 400;
+            background: #000;
+            display: none;
+            flex-direction: column;
+        }
+
+        .playback-mode.active {
+            display: flex;
+        }
+
+        .playback-stage {
+            flex: 1;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .playback-media {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .playback-subtitle {
+            position: absolute;
+            bottom: 8%;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 1.8rem;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.9);
+            text-align: center;
+            max-width: 80%;
+            line-height: 1.5;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .playback-subtitle.visible {
+            opacity: 1;
+        }
+
+        .playback-progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 4px;
+            background: rgba(197, 160, 89, 0.6);
+            transition: width 0.3s ease;
+        }
+
+        .playback-controls {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 1rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .playback-mode:hover .playback-controls {
+            opacity: 1;
+        }
+
+        .playback-btn {
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid var(--metallic-gold);
+            border-radius: 50%;
+            color: var(--metallic-gold);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+            transition: all 0.2s;
+        }
+
+        .playback-btn:hover {
+            background: rgba(197, 160, 89, 0.2);
+            transform: scale(1.1);
+        }
+
+        /* Blessing / End Screen */
+        .blessing-screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, #1a1a2e 0%, #05070A 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 1.5s ease;
+            pointer-events: none;
+        }
+
+        .blessing-screen.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .blessing-greeting {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            color: var(--metallic-gold);
+            text-shadow: 0 0 30px rgba(197, 160, 89, 0.5);
+            margin-bottom: 1rem;
+            animation: blessingFadeIn 2s ease forwards;
+            opacity: 0;
+        }
+
+        .blessing-name {
+            font-size: 1.5rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            animation: blessingFadeIn 2s ease 0.5s forwards;
+            opacity: 0;
+        }
+
+        .blessing-message {
+            font-size: 1.1rem;
+            color: #aaa;
+            max-width: 600px;
+            text-align: center;
+            line-height: 1.8;
+            margin-bottom: 3rem;
+            animation: blessingFadeIn 2s ease 1s forwards;
+            opacity: 0;
+        }
+
+        .blessing-actions {
+            display: flex;
+            gap: 1.5rem;
+            animation: blessingFadeIn 2s ease 1.5s forwards;
+            opacity: 0;
+        }
+
+        @keyframes blessingFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .share-modal .modal-content {
+            width: 450px;
+            text-align: center;
+        }
+
+        .share-link-container {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .share-link-input {
+            flex: 1;
+            padding: 0.8rem;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid #444;
+            color: var(--metallic-gold);
+            font-family: monospace;
+            font-size: 0.85rem;
+            border-radius: 4px;
+        }
+
+        .copy-btn {
+            padding: 0.8rem 1.2rem;
+            background: var(--metallic-gold);
+            color: #000;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.2s;
+        }
+
+        .copy-btn:hover {
+            background: #e6c67a;
+        }
+
+        .share-tip {
+            margin-top: 1rem;
+            color: #888;
+            font-size: 0.8rem;
+        }
+
+        /* Clip Type Modal */
+        .clip-type-modal .modal-content {
+            width: 500px;
+        }
+
+        .clip-type-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .clip-type-card {
+            padding: 1.2rem;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--glass-border);
+            border-radius: 6px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.2s;
+        }
+
+        .clip-type-card:hover {
+            border-color: var(--metallic-gold);
+            background: rgba(197, 160, 89, 0.1);
+        }
+
+        .clip-type-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .clip-type-name {
+            color: var(--metallic-gold);
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .clip-type-desc {
+            color: #888;
+            font-size: 0.75rem;
+        }
+
+        .script-person-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .script-person-info .form-group {
+            margin-bottom: 0;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        .bg-music-section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .bg-music-info {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .music-icon {
+            font-size: 1.5rem;
+        }
+
+        .music-name {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .music-controls {
+            display: flex;
+            gap: 0.5rem;
+            flex-shrink: 0;
+        }
+
+        .music-upload-btn {
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+            cursor: pointer;
+        }
+
+        .music-clear-btn {
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+        }
     </style>
     <!-- Import Maps for Three.js ES Modules -->
     <script type="importmap">
@@ -363,6 +984,13 @@
                 <p>人生轨迹银河 · 你的专属时空</p>
             </div>
             <div class="controls">
+                <button class="btn" id="script-btn">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    纪念日脚本
+                </button>
                 <button class="btn" id="add-event-btn">
                     <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
@@ -427,6 +1055,920 @@
         <p class="event-date" id="card-date">2023.01.01</p>
         <p class="event-desc" id="card-desc">Event description goes here.</p>
     </div>
+
+    <!-- Template Selection Modal -->
+    <div class="modal template-modal" id="template-modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-template-modal">&times;</span>
+            <h2 style="color: var(--metallic-gold); margin-bottom: 0.5rem; font-family: 'Cinzel';">选择纪念模板</h2>
+            <p style="color: #888; font-size: 0.9rem;">为您的特殊时刻选择一个脚本模板</p>
+
+            <div class="script-person-info" style="margin-top: 1.5rem;">
+                <div class="form-group">
+                    <label>主角姓名</label>
+                    <input type="text" id="person-name" placeholder="例如：张明">
+                </div>
+                <div class="form-group">
+                    <label>纪念日</label>
+                    <input type="date" id="anniversary-date">
+                </div>
+            </div>
+
+            <div class="template-grid">
+                <div class="template-card" data-template="birthday">
+                    <div class="template-icon">🎂</div>
+                    <div class="template-name">生日快乐</div>
+                    <div class="template-desc">温馨成长回顾<br>祝福美好未来</div>
+                </div>
+                <div class="template-card" data-template="wedding">
+                    <div class="template-icon">💒</div>
+                    <div class="template-name">结婚纪念</div>
+                    <div class="template-desc">浪漫爱情旅程<br>相守岁月温情</div>
+                </div>
+                <div class="template-card" data-template="retirement">
+                    <div class="template-icon">🌅</div>
+                    <div class="template-name">光荣退休</div>
+                    <div class="template-desc">职业生涯回望<br>开启人生新篇</div>
+                </div>
+            </div>
+
+            <button class="submit-btn" id="start-editor-btn" style="margin-top: 2rem;">开始编辑脚本</button>
+        </div>
+    </div>
+
+    <!-- Clip Type Selection Modal -->
+    <div class="modal clip-type-modal" id="clip-type-modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-clip-type-modal">&times;</span>
+            <h2 style="color: var(--metallic-gold); margin-bottom: 0.5rem; font-family: 'Cinzel';">添加片段</h2>
+            <p style="color: #888; font-size: 0.9rem;">选择要添加的片段类型</p>
+
+            <div class="clip-type-grid">
+                <div class="clip-type-card" data-clip-type="photo">
+                    <div class="clip-type-icon">🖼️</div>
+                    <div class="clip-type-name">照片</div>
+                    <div class="clip-type-desc">上传一张照片<br>展示珍贵瞬间</div>
+                </div>
+                <div class="clip-type-card" data-clip-type="video">
+                    <div class="clip-type-icon">🎬</div>
+                    <div class="clip-type-name">视频</div>
+                    <div class="clip-type-desc">上传视频片段<br>记录动态时光</div>
+                </div>
+                <div class="clip-type-card" data-clip-type="subtitle">
+                    <div class="clip-type-icon">📝</div>
+                    <div class="clip-type-name">字幕画面</div>
+                    <div class="clip-type-desc">纯文字转场<br>传达深情寄语</div>
+                </div>
+                <div class="clip-type-card" data-clip-type="galaxy">
+                    <div class="clip-type-icon">✨</div>
+                    <div class="clip-type-name">银河镜头</div>
+                    <div class="clip-type-desc">动态星空转场<br>营造梦幻氛围</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Editor -->
+    <div class="script-editor" id="script-editor">
+        <div class="script-header">
+            <div class="script-title" id="editor-title">脚本编辑器</div>
+            <div class="script-actions">
+                <button class="btn" id="preview-btn">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                    </svg>
+                    预览播放
+                </button>
+                <button class="btn" id="share-btn">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                    </svg>
+                    生成分享链接
+                </button>
+                <button class="btn" id="close-editor-btn">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                    关闭
+                </button>
+            </div>
+        </div>
+        <div class="script-body">
+            <div class="timeline-panel">
+                <div class="section-title">背景音乐</div>
+                <div class="bg-music-section">
+                    <div class="bg-music-info" id="bg-music-info">
+                        <span class="music-icon">🎵</span>
+                        <span class="music-name" id="bg-music-name">未选择音乐</span>
+                    </div>
+                    <div class="music-controls">
+                        <label class="btn music-upload-btn">
+                            <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                            </svg>
+                            选择音乐
+                            <input type="file" id="bg-music-input" accept="audio/*" style="display:none;">
+                        </label>
+                        <button class="btn music-clear-btn" id="bg-music-clear" style="display:none;">
+                            清除
+                        </button>
+                    </div>
+                </div>
+                <div class="section-title" style="margin-top: 1.5rem;">时间线 · 片段顺序</div>
+                <div class="clip-list" id="clip-list"></div>
+                <button class="add-clip-btn" id="add-clip-btn">
+                    + 添加片段
+                </button>
+            </div>
+            <div class="preview-panel">
+                <div class="section-title">预览</div>
+                <div class="preview-area" id="preview-area">
+                    <span class="preview-placeholder">选择一个片段进行预览</span>
+                </div>
+                <div class="section-title" style="margin-top: 1rem;">片段设置</div>
+                <div class="edit-form" id="clip-edit-form">
+                    <p style="color: #555; font-size: 0.85rem;">选择左侧片段以编辑</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Playback Mode -->
+    <div class="playback-mode" id="playback-mode">
+        <audio id="playback-audio" loop></audio>
+        <div class="playback-stage" id="playback-stage">
+            <img class="playback-media" id="playback-img" style="display:none;">
+            <video class="playback-media" id="playback-video" style="display:none;" playsinline></video>
+            <div class="playback-subtitle" id="playback-subtitle"></div>
+            <div class="playback-progress" id="playback-progress"></div>
+            <div class="blessing-screen" id="blessing-screen">
+                <div class="blessing-greeting" id="blessing-greeting">Happy Birthday</div>
+                <div class="blessing-name" id="blessing-name">致 亲爱的朋友</div>
+                <div class="blessing-message" id="blessing-message">
+                    愿你的每一天都充满阳光与欢笑<br>
+                    愿所有的美好都如期而至<br>
+                    生日快乐，岁岁平安
+                </div>
+                <div class="blessing-actions">
+                    <button class="btn" id="replay-btn">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                        </svg>
+                        重新播放
+                    </button>
+                    <button class="btn" id="exit-playback-btn">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                        退出
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="playback-controls">
+            <button class="playback-btn" id="playback-prev-btn" title="上一个">
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+            </button>
+            <button class="playback-btn" id="playback-play-btn" title="播放/暂停">
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" id="play-icon">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                </svg>
+            </button>
+            <button class="playback-btn" id="playback-next-btn" title="下一个">
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Share Modal -->
+    <div class="modal share-modal" id="share-modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-share-modal">&times;</span>
+            <h2 style="color: var(--metallic-gold); margin-bottom: 0.5rem; font-family: 'Cinzel';">分享给亲友</h2>
+            <p style="color: #888; font-size: 0.9rem;">复制链接分享给您的亲友观看</p>
+            <div class="share-link-container">
+                <input type="text" class="share-link-input" id="share-link" readonly>
+                <button class="copy-btn" id="copy-link-btn">复制</button>
+            </div>
+            <p class="share-tip">💡 提示：链接包含所有脚本数据，可直接打开观看</p>
+        </div>
+    </div>
+
+    <script>
+        // ==========================================
+        // Anniversary Script System (Standalone)
+        // ==========================================
+
+        document.addEventListener('DOMContentLoaded', function() {
+
+        const SCRIPT_STATE = {
+            currentTemplate: null,
+            personName: '',
+            anniversaryDate: '',
+            bgMusic: null,
+            bgMusicName: '',
+            clips: [],
+            selectedClipIndex: -1,
+            isPlaying: false,
+            currentClipIndex: 0,
+            clipStartTime: 0,
+            blessings: {
+                birthday: {
+                    greeting: '生日快乐',
+                    message: '愿你的每一天都充满阳光与欢笑\n愿所有的美好都如期而至\n生日快乐，岁岁平安'
+                },
+                wedding: {
+                    greeting: '纪念日快乐',
+                    message: '愿你们的爱情如星辰般永恒闪耀\n携手走过每一个春夏秋冬\n纪念日快乐，相爱永远'
+                },
+                retirement: {
+                    greeting: '光荣退休',
+                    message: '感谢您多年来的辛勤付出\n愿您开启人生崭新的篇章\n退休快乐，幸福安康'
+                }
+            }
+        };
+
+        const TEMPLATE_DEFAULTS = {
+            birthday: [
+                { type: 'subtitle', title: '序幕', subtitle: '时光荏苒，岁月如梭', duration: 3 },
+                { type: 'galaxy', title: '银河序曲', duration: 4 },
+                { type: 'subtitle', title: '成长', subtitle: '每一个瞬间都值得珍藏', duration: 3 },
+                { type: 'photo', title: '童年记忆', duration: 4, subtitle: '纯真年代' },
+                { type: 'photo', title: '青春时光', duration: 4, subtitle: '花样年华' },
+                { type: 'subtitle', title: '祝福', subtitle: '愿你被世界温柔以待', duration: 3 }
+            ],
+            wedding: [
+                { type: 'subtitle', title: '序幕', subtitle: '因为爱情，所以美好', duration: 3 },
+                { type: 'galaxy', title: '银河见证', duration: 4 },
+                { type: 'photo', title: '相遇', duration: 4, subtitle: '命运的邂逅' },
+                { type: 'photo', title: '相恋', duration: 4, subtitle: '甜蜜时光' },
+                { type: 'photo', title: '相守', duration: 4, subtitle: '携手一生' },
+                { type: 'subtitle', title: '誓言', subtitle: '执子之手，与子偕老', duration: 3 }
+            ],
+            retirement: [
+                { type: 'subtitle', title: '序幕', subtitle: '峥嵘岁月，光辉历程', duration: 3 },
+                { type: 'galaxy', title: '银河致敬', duration: 4 },
+                { type: 'photo', title: '奋斗岁月', duration: 4, subtitle: '青春无悔' },
+                { type: 'photo', title: '成就辉煌', duration: 4, subtitle: '荣耀时刻' },
+                { type: 'subtitle', title: '感谢', subtitle: '感谢您的奉献与付出', duration: 3 },
+                { type: 'subtitle', title: '新篇', subtitle: '开启人生新篇章', duration: 3 }
+            ]
+        };
+
+        const CLIP_TYPE_LABELS = {
+            photo: '照片',
+            video: '视频',
+            subtitle: '字幕画面',
+            galaxy: '银河镜头'
+        };
+
+        let selectedTemplate = null;
+        let playbackInterval = null;
+        let playbackClipStartTime = 0;
+
+        const scriptBtn = document.getElementById('script-btn');
+        const templateModal = document.getElementById('template-modal');
+        const closeTemplateModal = document.getElementById('close-template-modal');
+        const startEditorBtn = document.getElementById('start-editor-btn');
+        const templateCards = document.querySelectorAll('.template-card');
+        const scriptEditor = document.getElementById('script-editor');
+        const closeEditorBtn = document.getElementById('close-editor-btn');
+        const clipList = document.getElementById('clip-list');
+        const addClipBtn = document.getElementById('add-clip-btn');
+        const clipTypeModal = document.getElementById('clip-type-modal');
+        const closeClipTypeModal = document.getElementById('close-clip-type-modal');
+        const clipTypeCards = document.querySelectorAll('.clip-type-card');
+        const previewArea = document.getElementById('preview-area');
+        const clipEditForm = document.getElementById('clip-edit-form');
+        const previewBtn = document.getElementById('preview-btn');
+        const shareBtn = document.getElementById('share-btn');
+        const playbackMode = document.getElementById('playback-mode');
+        const blessingScreen = document.getElementById('blessing-screen');
+        const replayBtn = document.getElementById('replay-btn');
+        const exitPlaybackBtn = document.getElementById('exit-playback-btn');
+        const playbackPrevBtn = document.getElementById('playback-prev-btn');
+        const playbackPlayBtn = document.getElementById('playback-play-btn');
+        const playbackNextBtn = document.getElementById('playback-next-btn');
+        const playbackImg = document.getElementById('playback-img');
+        const playbackVideo = document.getElementById('playback-video');
+        const playbackSubtitle = document.getElementById('playback-subtitle');
+        const playbackProgress = document.getElementById('playback-progress');
+        const shareModal = document.getElementById('share-modal');
+        const closeShareModal = document.getElementById('close-share-modal');
+        const shareLinkInput = document.getElementById('share-link');
+        const copyLinkBtn = document.getElementById('copy-link-btn');
+        const editorTitle = document.getElementById('editor-title');
+        const bgMusicInput = document.getElementById('bg-music-input');
+        const bgMusicName = document.getElementById('bg-music-name');
+        const bgMusicClear = document.getElementById('bg-music-clear');
+        const playbackAudio = document.getElementById('playback-audio');
+
+        if (bgMusicInput) {
+            bgMusicInput.addEventListener('change', function(e) {
+                if (e.target.files && e.target.files[0]) {
+                    const file = e.target.files[0];
+                    const reader = new FileReader();
+                    reader.onload = function(ev) {
+                        SCRIPT_STATE.bgMusic = ev.target.result;
+                        SCRIPT_STATE.bgMusicName = file.name;
+                        bgMusicName.textContent = file.name;
+                        bgMusicClear.style.display = 'inline-flex';
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+
+        if (bgMusicClear) {
+            bgMusicClear.addEventListener('click', function() {
+                SCRIPT_STATE.bgMusic = null;
+                SCRIPT_STATE.bgMusicName = '';
+                bgMusicName.textContent = '未选择音乐';
+                bgMusicClear.style.display = 'none';
+                bgMusicInput.value = '';
+            });
+        }
+
+        scriptBtn.addEventListener('click', function() {
+            templateModal.classList.add('active');
+        });
+
+        closeTemplateModal.addEventListener('click', () => {
+            templateModal.classList.remove('active');
+        });
+
+        templateCards.forEach(card => {
+            card.addEventListener('click', () => {
+                templateCards.forEach(c => c.classList.remove('selected'));
+                card.classList.add('selected');
+                selectedTemplate = card.dataset.template;
+            });
+        });
+
+        startEditorBtn.addEventListener('click', () => {
+            if (!selectedTemplate) {
+                alert('请先选择一个模板');
+                return;
+            }
+            SCRIPT_STATE.currentTemplate = selectedTemplate;
+            SCRIPT_STATE.personName = document.getElementById('person-name').value || '亲爱的朋友';
+            SCRIPT_STATE.anniversaryDate = document.getElementById('anniversary-date').value;
+
+            SCRIPT_STATE.clips = JSON.parse(JSON.stringify(TEMPLATE_DEFAULTS[selectedTemplate]));
+
+            const templateNames = { birthday: '生日脚本', wedding: '结婚纪念脚本', retirement: '退休脚本' };
+            editorTitle.textContent = templateNames[selectedTemplate] || '脚本编辑器';
+
+            templateModal.classList.remove('active');
+            scriptEditor.classList.add('active');
+            renderClipList();
+        });
+
+        closeEditorBtn.addEventListener('click', () => {
+            scriptEditor.classList.remove('active');
+            SCRIPT_STATE.selectedClipIndex = -1;
+        });
+
+        addClipBtn.addEventListener('click', () => {
+            clipTypeModal.classList.add('active');
+        });
+
+        closeClipTypeModal.addEventListener('click', () => {
+            clipTypeModal.classList.remove('active');
+        });
+
+        clipTypeCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const type = card.dataset.clipType;
+                addNewClip(type);
+                clipTypeModal.classList.remove('active');
+            });
+        });
+
+        function addNewClip(type) {
+            const newClip = {
+                type: type,
+                title: '新' + CLIP_TYPE_LABELS[type] + '片段',
+                duration: type === 'video' ? 5 : 4,
+                subtitle: ''
+            };
+
+            if (type === 'photo') {
+                newClip.src = '';
+            } else if (type === 'video') {
+                newClip.src = '';
+            } else if (type === 'subtitle') {
+                newClip.subtitle = '请输入字幕内容';
+            }
+
+            SCRIPT_STATE.clips.push(newClip);
+            renderClipList();
+            selectClip(SCRIPT_STATE.clips.length - 1);
+        }
+
+        function renderClipList() {
+            clipList.innerHTML = '';
+            SCRIPT_STATE.clips.forEach(function(clip, index) {
+                const item = document.createElement('div');
+                item.className = 'clip-item';
+                item.draggable = true;
+                item.dataset.index = index;
+                if (index === SCRIPT_STATE.selectedClipIndex) {
+                    item.classList.add('selected');
+                }
+
+                const typeLabel = CLIP_TYPE_LABELS[clip.type] || clip.type;
+                item.innerHTML =
+                    '<div class="clip-index">' + (index + 1) + '</div>' +
+                    '<div class="clip-info">' +
+                        '<div class="clip-type">' + typeLabel + '</div>' +
+                        '<div class="clip-title">' + (clip.title || '未命名') + '</div>' +
+                        '<div class="clip-duration">' + clip.duration + '秒</div>' +
+                    '</div>' +
+                    '<div class="clip-controls">' +
+                        '<button class="clip-btn" data-action="up" title="上移">↑</button>' +
+                        '<button class="clip-btn" data-action="down" title="下移">↓</button>' +
+                        '<button class="clip-btn" data-action="delete" title="删除">×</button>' +
+                    '</div>';
+
+                item.addEventListener('click', function(e) {
+                    if (!e.target.closest('.clip-btn')) {
+                        selectClip(index);
+                    }
+                });
+
+                item.addEventListener('dragstart', function(e) {
+                    item.classList.add('dragging');
+                    e.dataTransfer.setData('text/plain', index);
+                });
+
+                item.addEventListener('dragend', function() {
+                    item.classList.remove('dragging');
+                });
+
+                item.addEventListener('dragover', function(e) {
+                    e.preventDefault();
+                });
+
+                item.addEventListener('drop', function(e) {
+                    e.preventDefault();
+                    const fromIndex = parseInt(e.dataTransfer.getData('text/plain'));
+                    const toIndex = index;
+                    if (fromIndex !== toIndex) {
+                        const removed = SCRIPT_STATE.clips.splice(fromIndex, 1)[0];
+                        SCRIPT_STATE.clips.splice(toIndex, 0, removed);
+                        renderClipList();
+                        selectClip(toIndex);
+                    }
+                });
+
+                item.querySelector('[data-action="up"]').addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    if (index > 0) {
+                        const temp = SCRIPT_STATE.clips[index];
+                        SCRIPT_STATE.clips[index] = SCRIPT_STATE.clips[index - 1];
+                        SCRIPT_STATE.clips[index - 1] = temp;
+                        renderClipList();
+                        selectClip(index - 1);
+                    }
+                });
+
+                item.querySelector('[data-action="down"]').addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    if (index < SCRIPT_STATE.clips.length - 1) {
+                        const temp = SCRIPT_STATE.clips[index];
+                        SCRIPT_STATE.clips[index] = SCRIPT_STATE.clips[index + 1];
+                        SCRIPT_STATE.clips[index + 1] = temp;
+                        renderClipList();
+                        selectClip(index + 1);
+                    }
+                });
+
+                item.querySelector('[data-action="delete"]').addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    if (confirm('确定要删除这个片段吗？')) {
+                        SCRIPT_STATE.clips.splice(index, 1);
+                        if (SCRIPT_STATE.selectedClipIndex === index) {
+                            SCRIPT_STATE.selectedClipIndex = -1;
+                        } else if (SCRIPT_STATE.selectedClipIndex > index) {
+                            SCRIPT_STATE.selectedClipIndex--;
+                        }
+                        renderClipList();
+                        updatePreviewAndForm();
+                    }
+                });
+
+                clipList.appendChild(item);
+            });
+        }
+
+        function selectClip(index) {
+            SCRIPT_STATE.selectedClipIndex = index;
+            const items = document.querySelectorAll('.clip-item');
+            items.forEach(function(item, i) {
+                item.classList.toggle('selected', i === index);
+            });
+            updatePreviewAndForm();
+        }
+
+        function updatePreviewAndForm() {
+            const index = SCRIPT_STATE.selectedClipIndex;
+            if (index < 0 || index >= SCRIPT_STATE.clips.length) {
+                previewArea.innerHTML = '<span class="preview-placeholder">选择一个片段进行预览</span>';
+                clipEditForm.innerHTML = '<p style="color: #555; font-size: 0.85rem;">选择左侧片段以编辑</p>';
+                return;
+            }
+
+            const clip = SCRIPT_STATE.clips[index];
+
+            if (clip.type === 'photo' && clip.src) {
+                previewArea.innerHTML = '<img class="preview-image" src="' + clip.src + '" alt="预览">';
+                if (clip.subtitle) {
+                    previewArea.innerHTML += '<div class="preview-subtitle">' + clip.subtitle + '</div>';
+                }
+            } else if (clip.type === 'video' && clip.src) {
+                previewArea.innerHTML = '<video class="preview-image" src="' + clip.src + '" controls style="max-width:100%;max-height:100%;"></video>';
+            } else if (clip.type === 'subtitle') {
+                previewArea.innerHTML =
+                    '<div style="width:100%;height:100%;background:linear-gradient(135deg,#1a1a2e,#05070A);display:flex;align-items:center;justify-content:center;">' +
+                        '<span style="color:white;font-size:1.2rem;text-align:center;padding:2rem;line-height:1.8;">' + (clip.subtitle || '字幕内容') + '</span>' +
+                    '</div>';
+            } else if (clip.type === 'galaxy') {
+                previewArea.innerHTML =
+                    '<div style="width:100%;height:100%;background:radial-gradient(ellipse at center,#0a0a1a,#000);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;">' +
+                        '<div style="position:absolute;width:100%;height:100%;background:radial-gradient(circle at 30% 40%,rgba(197,160,89,0.3) 0%,transparent 50%),radial-gradient(circle at 70% 60%,rgba(53,74,61,0.3) 0%,transparent 50%);"></div>' +
+                        '<span style="color:var(--metallic-gold);z-index:1;">✨ 银河镜头 ✨</span>' +
+                    '</div>';
+            } else {
+                previewArea.innerHTML = '<span class="preview-placeholder">暂无预览内容</span>';
+            }
+
+            let formHtml = '';
+            formHtml +=
+                '<div>' +
+                    '<label>片段标题</label>' +
+                    '<input type="text" id="edit-title" value="' + (clip.title || '') + '">' +
+                '</div>' +
+                '<div>' +
+                    '<label>时长（秒）</label>' +
+                    '<input type="number" id="edit-duration" value="' + clip.duration + '" min="1" max="30">' +
+                '</div>';
+
+            if (clip.type === 'photo') {
+                formHtml +=
+                    '<div>' +
+                        '<label>照片</label>' +
+                        '<input type="file" id="edit-file" accept="image/*">' +
+                    '</div>';
+            } else if (clip.type === 'video') {
+                formHtml +=
+                    '<div>' +
+                        '<label>视频</label>' +
+                        '<input type="file" id="edit-file" accept="video/*">' +
+                    '</div>';
+            }
+
+            if (clip.type !== 'galaxy') {
+                formHtml +=
+                    '<div>' +
+                        '<label>字幕文字</label>' +
+                        '<textarea id="edit-subtitle" rows="3">' + (clip.subtitle || '') + '</textarea>' +
+                    '</div>';
+            }
+
+            clipEditForm.innerHTML = formHtml;
+
+            const titleInput = document.getElementById('edit-title');
+            const durationInput = document.getElementById('edit-duration');
+            const subtitleInput = document.getElementById('edit-subtitle');
+            const fileInput = document.getElementById('edit-file');
+
+            if (titleInput) {
+                titleInput.addEventListener('input', function() {
+                    clip.title = titleInput.value;
+                    renderClipList();
+                });
+            }
+
+            if (durationInput) {
+                durationInput.addEventListener('input', function() {
+                    clip.duration = parseFloat(durationInput.value) || 3;
+                    renderClipList();
+                });
+            }
+
+            if (subtitleInput) {
+                subtitleInput.addEventListener('input', function() {
+                    clip.subtitle = subtitleInput.value;
+                    updatePreviewAndForm();
+                });
+            }
+
+            if (fileInput) {
+                fileInput.addEventListener('change', function(e) {
+                    if (e.target.files && e.target.files[0]) {
+                        const file = e.target.files[0];
+                        const reader = new FileReader();
+                        reader.onload = function(ev) {
+                            clip.src = ev.target.result;
+                            updatePreviewAndForm();
+                            renderClipList();
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                });
+            }
+        }
+
+        previewBtn.addEventListener('click', function() {
+            startPlayback();
+        });
+
+        function startPlayback() {
+            if (SCRIPT_STATE.clips.length === 0) {
+                alert('请先添加至少一个片段');
+                return;
+            }
+
+            scriptEditor.classList.remove('active');
+            playbackMode.classList.add('active');
+            blessingScreen.classList.remove('active');
+            SCRIPT_STATE.isPlaying = true;
+            SCRIPT_STATE.currentClipIndex = 0;
+
+            if (SCRIPT_STATE.bgMusic && playbackAudio) {
+                playbackAudio.src = SCRIPT_STATE.bgMusic;
+                playbackAudio.volume = 0.5;
+                playbackAudio.play().catch(function(e) {
+                    console.warn('Audio play failed:', e);
+                });
+            }
+
+            playClip(0);
+        }
+
+        function playClip(index) {
+            if (index >= SCRIPT_STATE.clips.length) {
+                showBlessingScreen();
+                return;
+            }
+
+            SCRIPT_STATE.currentClipIndex = index;
+            const clip = SCRIPT_STATE.clips[index];
+
+            playbackImg.style.display = 'none';
+            playbackVideo.style.display = 'none';
+            playbackSubtitle.classList.remove('visible');
+            blessingScreen.classList.remove('active');
+
+            if (clip.type === 'photo') {
+                if (clip.src) {
+                    playbackImg.src = clip.src;
+                    playbackImg.style.display = 'block';
+                } else {
+                    playbackImg.style.display = 'none';
+                    playbackVideo.style.display = 'none';
+                }
+                if (clip.subtitle) {
+                    playbackSubtitle.textContent = clip.subtitle;
+                    setTimeout(function() { playbackSubtitle.classList.add('visible'); }, 300);
+                }
+                startClipTimer(clip.duration);
+            } else if (clip.type === 'video') {
+                if (clip.src) {
+                    playbackVideo.src = clip.src;
+                    playbackVideo.style.display = 'block';
+                    playbackVideo.play().catch(function(e) { console.warn('Video play error:', e); });
+                    playbackVideo.onended = function() {
+                        nextClip();
+                    };
+                    if (clip.subtitle) {
+                        playbackSubtitle.textContent = clip.subtitle;
+                        setTimeout(function() { playbackSubtitle.classList.add('visible'); }, 300);
+                    }
+                } else {
+                    startClipTimer(clip.duration);
+                }
+            } else if (clip.type === 'subtitle') {
+                playbackSubtitle.textContent = clip.subtitle || '';
+                setTimeout(function() { playbackSubtitle.classList.add('visible'); }, 300);
+                startClipTimer(clip.duration);
+            } else if (clip.type === 'galaxy') {
+                playbackImg.style.display = 'none';
+                playbackVideo.style.display = 'none';
+                startClipTimer(clip.duration);
+            }
+
+            updateProgressBar();
+        }
+
+        function startClipTimer(duration) {
+            clearInterval(playbackInterval);
+            playbackClipStartTime = Date.now();
+            const clipDuration = duration * 1000;
+
+            playbackInterval = setInterval(function() {
+                if (!SCRIPT_STATE.isPlaying) return;
+
+                const elapsed = Date.now() - playbackClipStartTime;
+                const progress = Math.min(elapsed / clipDuration, 1);
+                const totalProgress = ((SCRIPT_STATE.currentClipIndex + progress) / SCRIPT_STATE.clips.length) * 100;
+                playbackProgress.style.width = totalProgress + '%';
+
+                if (elapsed >= clipDuration) {
+                    nextClip();
+                }
+            }, 50);
+        }
+
+        function updateProgressBar() {
+            const totalProgress = (SCRIPT_STATE.currentClipIndex / SCRIPT_STATE.clips.length) * 100;
+            playbackProgress.style.width = totalProgress + '%';
+        }
+
+        function nextClip() {
+            clearInterval(playbackInterval);
+            if (SCRIPT_STATE.currentClipIndex < SCRIPT_STATE.clips.length - 1) {
+                playClip(SCRIPT_STATE.currentClipIndex + 1);
+            } else {
+                showBlessingScreen();
+            }
+        }
+
+        function prevClip() {
+            clearInterval(playbackInterval);
+            if (SCRIPT_STATE.currentClipIndex > 0) {
+                playClip(SCRIPT_STATE.currentClipIndex - 1);
+            }
+        }
+
+        function showBlessingScreen() {
+            clearInterval(playbackInterval);
+            playbackImg.style.display = 'none';
+            playbackVideo.style.display = 'none';
+            playbackSubtitle.classList.remove('visible');
+            playbackProgress.style.width = '100%';
+
+            const blessing = SCRIPT_STATE.blessings[SCRIPT_STATE.currentTemplate];
+            if (blessing) {
+                document.getElementById('blessing-greeting').textContent = blessing.greeting;
+                document.getElementById('blessing-message').innerHTML = blessing.message.replace(/\n/g, '<br>');
+            }
+            document.getElementById('blessing-name').textContent = '致 ' + SCRIPT_STATE.personName;
+
+            blessingScreen.classList.add('active');
+        }
+
+        playbackPrevBtn.addEventListener('click', function() {
+            prevClip();
+        });
+
+        playbackNextBtn.addEventListener('click', function() {
+            nextClip();
+        });
+
+        playbackPlayBtn.addEventListener('click', function() {
+            SCRIPT_STATE.isPlaying = !SCRIPT_STATE.isPlaying;
+            const playIcon = document.getElementById('play-icon');
+            if (SCRIPT_STATE.isPlaying) {
+                playIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6" />';
+                if (SCRIPT_STATE.clips[SCRIPT_STATE.currentClipIndex] && SCRIPT_STATE.clips[SCRIPT_STATE.currentClipIndex].type === 'video') {
+                    playbackVideo.play().catch(function(e) { console.warn(e); });
+                } else {
+                    playbackClipStartTime = Date.now() - (getElapsedFromProgress());
+                    startClipTimer(SCRIPT_STATE.clips[SCRIPT_STATE.currentClipIndex].duration);
+                }
+                if (SCRIPT_STATE.bgMusic && playbackAudio) {
+                    playbackAudio.play().catch(function(e) { console.warn(e); });
+                }
+            } else {
+                playIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />';
+                clearInterval(playbackInterval);
+                if (SCRIPT_STATE.clips[SCRIPT_STATE.currentClipIndex] && SCRIPT_STATE.clips[SCRIPT_STATE.currentClipIndex].type === 'video') {
+                    playbackVideo.pause();
+                }
+                if (playbackAudio) {
+                    playbackAudio.pause();
+                }
+            }
+        });
+
+        function getElapsedFromProgress() {
+            const totalProgressStr = playbackProgress.style.width || '0%';
+            const totalProgress = parseFloat(totalProgressStr) / 100;
+            const clipProgress = (totalProgress * SCRIPT_STATE.clips.length) - SCRIPT_STATE.currentClipIndex;
+            const duration = (SCRIPT_STATE.clips[SCRIPT_STATE.currentClipIndex] && SCRIPT_STATE.clips[SCRIPT_STATE.currentClipIndex].duration) || 3;
+            return clipProgress * duration * 1000;
+        }
+
+        replayBtn.addEventListener('click', function() {
+            SCRIPT_STATE.isPlaying = true;
+            SCRIPT_STATE.currentClipIndex = 0;
+            if (SCRIPT_STATE.bgMusic && playbackAudio) {
+                playbackAudio.currentTime = 0;
+                playbackAudio.play().catch(function(e) {
+                    console.warn('Audio play failed:', e);
+                });
+            }
+            playClip(0);
+        });
+
+        exitPlaybackBtn.addEventListener('click', function() {
+            exitPlayback();
+        });
+
+        function exitPlayback() {
+            clearInterval(playbackInterval);
+            SCRIPT_STATE.isPlaying = false;
+            playbackVideo.pause();
+            if (playbackAudio) {
+                playbackAudio.pause();
+                playbackAudio.currentTime = 0;
+            }
+            playbackMode.classList.remove('active');
+            scriptEditor.classList.add('active');
+        }
+
+        shareBtn.addEventListener('click', function() {
+            generateShareLink();
+            shareModal.classList.add('active');
+        });
+
+        closeShareModal.addEventListener('click', function() {
+            shareModal.classList.remove('active');
+        });
+
+        function generateShareLink() {
+            const scriptData = {
+                template: SCRIPT_STATE.currentTemplate,
+                name: SCRIPT_STATE.personName,
+                date: SCRIPT_STATE.anniversaryDate,
+                music: SCRIPT_STATE.bgMusic,
+                musicName: SCRIPT_STATE.bgMusicName,
+                clips: SCRIPT_STATE.clips
+            };
+
+            try {
+                const encoded = btoa(encodeURIComponent(JSON.stringify(scriptData)));
+                const url = window.location.origin + window.location.pathname + '?play=' + encoded;
+                shareLinkInput.value = url;
+            } catch (e) {
+                shareLinkInput.value = '生成链接失败：数据过大（音乐文件可能太大）';
+            }
+        }
+
+        copyLinkBtn.addEventListener('click', function() {
+            shareLinkInput.select();
+            document.execCommand('copy');
+            const originalText = copyLinkBtn.textContent;
+            copyLinkBtn.textContent = '已复制';
+            setTimeout(function() {
+                copyLinkBtn.textContent = originalText;
+            }, 2000);
+        });
+
+        function checkSharedScript() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const playData = urlParams.get('play');
+
+            if (playData) {
+                try {
+                    const decoded = JSON.parse(decodeURIComponent(atob(playData)));
+                    if (decoded.template && decoded.clips) {
+                        SCRIPT_STATE.currentTemplate = decoded.template;
+                        SCRIPT_STATE.personName = decoded.name || '亲爱的朋友';
+                        SCRIPT_STATE.anniversaryDate = decoded.date || '';
+                        SCRIPT_STATE.bgMusic = decoded.music || null;
+                        SCRIPT_STATE.bgMusicName = decoded.musicName || '';
+                        SCRIPT_STATE.clips = decoded.clips;
+
+                        if (bgMusicName && SCRIPT_STATE.bgMusicName) {
+                            bgMusicName.textContent = SCRIPT_STATE.bgMusicName;
+                        }
+                        if (bgMusicClear && SCRIPT_STATE.bgMusic) {
+                            bgMusicClear.style.display = 'inline-flex';
+                        }
+
+                        const templateNames = { birthday: '生日脚本', wedding: '结婚纪念脚本', retirement: '退休脚本' };
+                        editorTitle.textContent = templateNames[decoded.template] || '脚本编辑器';
+
+                        startPlayback();
+                    }
+                } catch (e) {
+                    console.warn('Failed to parse shared script:', e);
+                }
+            }
+        }
+
+        checkSharedScript();
+
+        });
+    </script>
 
     <script type="module">
         import * as THREE from 'three';
